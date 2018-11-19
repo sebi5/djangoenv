@@ -1,0 +1,67 @@
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Auth Page</title>
+
+    <style>
+        .content{
+			margin:0px auto;
+			text-align:center;
+			padding:20px;
+		}
+		body{
+			font-family:helvetica;
+		}
+		input{
+			font-size:1.12em;
+			padding:2px;
+			margin:4px;
+			width:240px;
+		}
+		button{
+			color:white;
+			background-color:#005A9C;
+			border:1px solid #005A9C;
+			border-radius:4px;
+			padding:5px 10px;
+			width:120px;
+			font-size:1.01em;
+			cursor:pointer;
+		}
+		a {
+			color:blue;
+		}
+		span{
+			color:red;
+		}
+</style>
+
+</head>
+
+<body>
+
+    <div class="content">
+        <div><b>Note Web App</b></div>
+        <form method="post" action="/auth/">
+            {% csrf_token %}
+            <br />
+            <label>Please enter the code sent to <b>{{user_email}}</b> to continue</label><br />
+            <input type="text" name="code" placeholder="code" autocomplete="off" /><br /><br />
+            <input type="hidden" name="email" value="{{user_email}}" />
+
+            <button>Submit</button><br /><br />
+
+            <span>{{err}}</span>
+
+        </form>
+
+        <br /><a href="/">Wrong email? Try again.</a>
+
+    </div>
+
+</body>
+
+</html>

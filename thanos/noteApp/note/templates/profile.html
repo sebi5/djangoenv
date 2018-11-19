@@ -1,0 +1,83 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Auth Page</title>
+    <style>
+        .content {
+            padding: 5px;
+        }
+
+        body {
+            font-family: helvetica;
+        }
+
+        input {
+            font-size: 1.12em;
+            padding: 2px;
+            margin: 4px;
+            width: 240px;
+        }
+
+        button {
+            color: white;
+            background-color: #005A9C;
+            border: 1px solid #005A9C;
+            border-radius: 4px;
+            padding: 5px 10px;
+            width: 120px;
+            font-size: 1.01em;
+            cursor: pointer;
+        }
+
+        a {
+            color: red;
+        }
+
+        .saved {
+            color: green;
+        }
+
+        textarea {
+            width: 80%;
+            height: 50%;
+            font-size: 1.01em;
+            margin: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <br />
+
+    <div class="content">
+
+        <div>Welcome <b>{{user_email}}</b>! &nbsp; <a href="/logout/">Logout</a></div>
+
+        <form method="post" action="/profile/">
+            {% csrf_token %}
+            <textarea name="note">{{user_note}}</textarea><br /><br />
+            <button>Save</button> &nbsp; <span id="saved" class="saved">Latest note</span>
+        </form>
+
+        <br /><br /><br /><br /><a href="javascript:void(0);" onclick="confirm_deletion();">Delete Account?</a>
+
+    </div>
+
+    <script>
+        function confirm_deletion() {
+            var r = confirm("Are you sure? Your account will be permanently deleted.");
+            if (r == true) {
+                window.location.href = "/delete/";
+            }
+        }
+
+        setTimeout(function() {
+            document.getElementById('saved').style.display = "none";
+        }, 1200);
+    </script>
+</body>
+
+
+</html>

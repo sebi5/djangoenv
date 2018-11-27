@@ -44,21 +44,23 @@
 <body>
 
     <div class="content">
-        <div><b>Note Web App</b></div>
+        <div><b>Alarm</b></div>
         <form method="post" action="/auth/">
             {% csrf_token %}
             <br />
-            <label>Please enter the code sent to <b>{{user_email}}</b> to continue</label><br />
-            <input type="text" name="code" placeholder="code" autocomplete="off" /><br /><br />
-            <input type="hidden" name="email" value="{{user_email}}" />
+            
+    
+            <ul>
+            	{% for alarm in alarms %}
+            	<li>{{ alarm.id }} -- {{ alarm.content }}</li>
+            	{% endfor %}
+            </ul>
 
-            <button>Submit</button><br /><br />
-
-            <span>{{err}}</span>
+          
 
         </form>
 
-        <br /><a href="/">Wrong email? Try again.</a>
+        
 
     </div>
 

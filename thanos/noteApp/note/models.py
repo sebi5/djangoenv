@@ -7,9 +7,7 @@ from django.db import models
 # Create your models here.
 
 class Userdata(models.Model):
-    user_id = models.TextField(unique=True, max_length=600)
-    email = models.TextField(unique=True, max_length=100)
+    user_id = models.TextField(max_length=600)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
-    passcode = models.TextField(max_length=100)
     

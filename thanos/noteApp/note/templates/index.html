@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <title>Note Home Page</title>
+    <title>alarm Home Page</title>
 
     <style>
         .content{
@@ -41,13 +41,13 @@
 <body>
 
     <div class="content">
-        <div><b>Private Note</b></div>
+        <div><b>alarm</b></div>
         <form method="post" action="/auth/">
             {% csrf_token %}
             <br />
-            <label>Enter your email to continue</label><br />
-            <input type="email" name="email" placeholder="Email Address" autocomplete="off" /><br /><br />
-
+            <label>Enter alarm details</label><br />
+            <input type="text" name="todo" placeholder="todo" autocomplete="off" /><br /><br />
+			
             <button onclick="show_msg()">Submit</button>
             <br /><br />
             <span id="loading">Loading ...</span>
